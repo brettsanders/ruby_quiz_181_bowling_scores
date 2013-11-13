@@ -18,8 +18,15 @@
 #    *        8
 
 
-class Frame
+class Game
+  def initialize(input_data)
+    @name = input_data.shift
+    @rolls = input_data
+  end
 end
 
 class DisplayScore
 end
+
+johns_game = Game.new(ARGV)
+p johns_game
