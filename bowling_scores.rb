@@ -1,6 +1,6 @@
 # 
 # Bowling_scores.rb John 6 2 7 1 10 9 0 8 2 10 10 3 5 7 2 5 5 8
-# Your should tally the per-frame scores and generate output in table form, such as:
+#  Your should tally the per-frame scores and generate output in table form, such as:
 # 
 # John's final score: 140
 # 
@@ -17,12 +17,23 @@
 #   10        5     /      140
 #    *        8
 
-
 class Game
   def initialize(input_data)
     @name = input_data.shift
-    @rolls = input_data
+    @rolls = add_zeros_after_tens(input_data)
+    @frames = score_roles(@rolls)
   end
+
+  private
+    def add_zeros_after_tens(input_data)
+      input_data.each_with_index do |roll, index|
+        if roll == '10'
+          p 'roll is 10'
+          input_data.insert(index+1,0)
+        end
+      end
+      input_data
+    end
 end
 
 class DisplayScore
